@@ -15,15 +15,14 @@ class ezDelivery extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
-        primaryColor:kBaseColor1,
+        primaryColor: kBaseColor1,
         scaffoldBackgroundColor: kBaseColor2,
       ),
-      initialRoute: '/log',
+      initialRoute: '/registration_screen',
       routes: {
         '/': (context) => initial_screen(),
-        '/reg':(context)=>registration_screen(),
-        '/log':(context)=>login_screen(),
-        //'/login_screen':(context)=>
+        '/registration_screen': (context) => registration_screen(),
+        '/login_screen': (context) => login_screen(),
       },
     );
   }

@@ -168,7 +168,9 @@ class login_screen extends StatelessWidget {
                         style: TextButton.styleFrom(
                           textStyle: kInstructionStyle,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/registration_screen');
+                        },
                         child: const Text('Sign up'),
                       ),
                     ],
