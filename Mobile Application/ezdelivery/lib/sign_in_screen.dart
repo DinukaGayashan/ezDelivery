@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
 
-class login_screen extends StatelessWidget {
-  const login_screen({Key? key}) : super(key: key);
+class sign_in_screen extends StatelessWidget {
+  const sign_in_screen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +96,7 @@ class login_screen extends StatelessWidget {
                   height: 10.0,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -169,7 +169,7 @@ class login_screen extends StatelessWidget {
                           textStyle: kInstructionStyle,
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(context, '/registration_screen');
+                          Navigator.pushNamed(context, '/sign_up_screen');
                         },
                         child: const Text('Sign up'),
                       ),

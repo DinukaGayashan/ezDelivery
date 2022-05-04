@@ -19,6 +19,12 @@ const TextStyle kSubjectStyle = TextStyle(
   color: kBaseColor2,
 );
 
+const TextStyle kSubSubjectStyle = TextStyle(
+  fontSize: 25,
+  fontFamily: 'Poppins',
+  color: kBaseColor2,
+);
+
 const TextStyle kInstructionStyle = TextStyle(
   fontSize: 15,
   fontFamily: 'Poppins',
@@ -30,4 +36,11 @@ const TextStyle kButtonTextStyle = TextStyle(
   fontFamily: 'Poppins',
   color: kBaseColor2,
   fontWeight: FontWeight.bold,
+);
+
+const TextStyle kDrawerTextStyle = TextStyle(
+  fontSize: 18,
+  fontFamily: 'Poppins',
+  color: kAccentColor1,
+  letterSpacing: 1.5,
 );

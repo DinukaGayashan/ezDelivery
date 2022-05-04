@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
 
-class registration_screen extends StatelessWidget {
+class sign_up_screen extends StatelessWidget {
+  const sign_up_screen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +93,7 @@ class registration_screen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 10.0,
+                  height: 9.0,
                 ),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.0),
@@ -153,7 +154,7 @@ class registration_screen extends StatelessWidget {
                           textStyle: kInstructionStyle,
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(context, '/login_screen');
+                          Navigator.pushNamed(context, '/sign_in_screen');
                         },
                         child: const Text('Sign in'),
                       ),
