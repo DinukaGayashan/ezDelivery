@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
-import 'navigation_drawer.dart';
+import 'customer_navigation_drawer.dart';
 
 class delivery_tracking_screen extends StatelessWidget {
   const delivery_tracking_screen({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class delivery_tracking_screen extends StatelessWidget {
             style: kSubSubjectStyle,
           ),
         ),
-        drawer: navigation_drawer(),
+        drawer: customer_navigation_drawer(),
         body: const SafeArea(
         child: SingleChildScrollView(
         ),

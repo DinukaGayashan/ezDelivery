@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
-import 'navigation_drawer.dart';
+import 'customer_navigation_drawer.dart';
 
-class schedule_time_screen extends StatelessWidget {
-  const schedule_time_screen({Key? key}) : super(key: key);
+class share_account_screen extends StatelessWidget {
+  const share_account_screen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +14,11 @@ class schedule_time_screen extends StatelessWidget {
         elevation: 8.0,
         toolbarHeight: 80.0,
         title: const Text(
-          'Schedule Time',
+          'Share Account',
           style: kSubSubjectStyle,
         ),
       ),
-      drawer: navigation_drawer(),
+      drawer: customer_navigation_drawer(),
       body: const SafeArea(
         child: SingleChildScrollView(
         ),
