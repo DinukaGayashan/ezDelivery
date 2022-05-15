@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
 
-class customer_navigation_drawer extends StatelessWidget{
+class deliverer_navigation_drawer extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -34,29 +34,20 @@ class customer_navigation_drawer extends StatelessWidget{
           ),
           ListTile(
             title: const Text(
-              "DELIVERY TRACKING",
+              "CUSTOMER TRACKING",
               style: kDrawerTextStyle,
             ),
             onTap: (){
-              Navigator.pushNamed(context, '/delivery_tracking_screen');
+              Navigator.pushNamed(context, '/delivery_tracking');
             },
           ),
           ListTile(
             title: const Text(
-              "SCHEDULE TIME",
+              "ADD DELIVERY",
               style: kDrawerTextStyle,
             ),
             onTap: (){
-              Navigator.pushNamed(context, '/schedule_time_screen');
-            },
-          ),
-          ListTile(
-            title: const Text(
-              "SHARE ACCOUNT",
-              style: kDrawerTextStyle,
-            ),
-            onTap: (){
-              Navigator.pushNamed(context, '/share_account_screen');
+              Navigator.pushNamed(context, '/share_account');
             },
           ),
           ListTile(
@@ -65,7 +56,7 @@ class customer_navigation_drawer extends StatelessWidget{
               style: kDrawerTextStyle,
             ),
             onTap: (){
-              Navigator.pushNamed(context, '/settings_screen');
+              Navigator.pushNamed(context, '/settings');
             },
           ),
           ListTile(
@@ -74,7 +65,7 @@ class customer_navigation_drawer extends StatelessWidget{
               style: kDrawerTextStyle,
             ),
             onTap: (){
-              Navigator.pushNamed(context, '/sign_in_screen');
+              Navigator.pushNamed(context, '/sign_in');
             },
           ),
         ],

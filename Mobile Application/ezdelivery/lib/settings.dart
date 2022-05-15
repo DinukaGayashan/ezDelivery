@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'customer_navigation_drawer.dart';
 
-class settings_screen extends StatelessWidget {
-  const settings_screen({Key? key}) : super(key: key);
+class settings extends StatelessWidget {
+  const settings({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
 
-class sign_in_screen extends StatelessWidget {
-  const sign_in_screen({Key? key}) : super(key: key);
+class sign_in extends StatelessWidget {
+  const sign_in({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -169,7 +169,7 @@ class sign_in_screen extends StatelessWidget {
                           textStyle: kInstructionStyle,
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(context, '/sign_up_screen');
+                          Navigator.pushNamed(context, '/sign_up');
                         },
                         child: const Text('Sign up'),
                       ),

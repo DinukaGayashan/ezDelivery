@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'customer_navigation_drawer.dart';
 
-class schedule_time_screen extends StatelessWidget {
-  const schedule_time_screen({Key? key}) : super(key: key);
+class schedule_time extends StatelessWidget {
+  const schedule_time({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

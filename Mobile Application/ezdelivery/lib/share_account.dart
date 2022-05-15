@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'customer_navigation_drawer.dart';
 
-class share_account_screen extends StatelessWidget {
-  const share_account_screen({Key? key}) : super(key: key);
+class share_account extends StatelessWidget {
+  const share_account({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

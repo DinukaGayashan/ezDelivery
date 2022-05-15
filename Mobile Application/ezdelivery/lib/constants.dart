@@ -31,6 +31,18 @@ const TextStyle kInstructionStyle = TextStyle(
   color: kAccentColor3,
 );
 
+const TextStyle kInstructionStyle2 = TextStyle(
+  fontSize: 20,
+  fontFamily: 'Poppins',
+  color: kBaseColor1,
+);
+
+const TextStyle kDetailsStyle = TextStyle(
+  fontSize: 20,
+  fontFamily: 'Poppins',
+  color: kAccentColor1,
+);
+
 const TextStyle kButtonTextStyle = TextStyle(
   fontSize: 20,
   fontFamily: 'Poppins',
@@ -44,3 +56,4 @@ const TextStyle kDrawerTextStyle = TextStyle(
   color: kAccentColor1,
   letterSpacing: 1.5,
 );
+
