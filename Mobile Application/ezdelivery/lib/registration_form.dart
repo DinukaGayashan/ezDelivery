@@ -1,9 +1,22 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'constants.dart';
 
-class registration_form extends StatelessWidget {
+class registration_form extends StatefulWidget {
   const registration_form({Key? key}) : super(key: key);
+
+  @override
+  State<registration_form> createState() => _registration_formState();
+}
+
+class _registration_formState extends State<registration_form> {
+  int longitude=0, latitude=0;
+
+  void getLocation() async {
+    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation);
+    longitude=position.longitude as int;
+    latitude=position.latitude as int;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -142,9 +155,11 @@ class registration_form extends StatelessWidget {
                       style: TextButton.styleFrom(
                         textStyle: kInstructionStyle,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        getLocation();
+                      },
                       child: const Text(
-                        'Get Current\nLocation'
+                          'Get Current\nLocation'
                       ),
                     ),
                   ],
