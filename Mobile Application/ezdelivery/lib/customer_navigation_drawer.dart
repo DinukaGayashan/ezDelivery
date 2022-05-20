@@ -1,7 +1,33 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class customer_navigation_drawer extends StatelessWidget{
+class customer_navigation_drawer extends StatefulWidget {
+  const customer_navigation_drawer({Key? key}) : super(key: key);
+
+  @override
+  State<customer_navigation_drawer> createState() => _customer_navigation_drawerState();
+}
+
+class _customer_navigation_drawerState extends State<customer_navigation_drawer> {
+
+  final _auth=FirebaseAuth.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    getUser();
+  }
+
+  void getUser(){
+    try{
+      final User? user=_auth.currentUser;
+    }
+    catch(e){
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -74,6 +100,7 @@ class customer_navigation_drawer extends StatelessWidget{
               style: kDrawerTextStyle,
             ),
             onTap: (){
+              _auth.signOut();
               Navigator.pushNamed(context, '/sign_in');
             },
           ),

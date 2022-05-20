@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class registration_form extends StatefulWidget {
   const registration_form({Key? key}) : super(key: key);
@@ -10,12 +12,31 @@ class registration_form extends StatefulWidget {
 }
 
 class _registration_formState extends State<registration_form> {
-  int longitude=0, latitude=0;
+
+  late double latitude,longitude;
+  late String name,address,contactNumber;
+  final _auth=FirebaseAuth.instance;
+  final FirebaseFirestore _firestore=FirebaseFirestore.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    getUser();
+  }
+
+  void getUser(){
+    try{
+      final User? user=_auth.currentUser;
+    }
+    catch(e){
+      print(e);
+    }
+  }
 
   void getLocation() async {
-    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation);
-    longitude=position.longitude as int;
-    latitude=position.latitude as int;
+    Position location = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation);
+    latitude=location.latitude.toDouble();
+    longitude=location.longitude.toDouble();
   }
 
   @override
@@ -58,6 +79,9 @@ class _registration_formState extends State<registration_form> {
                     ),
                     hintText: 'Enter your name',
                   ),
+                  onChanged: (value){
+                    name=value;
+                  },
                 ),
                 const SizedBox(
                   height: 30.0,
@@ -79,6 +103,9 @@ class _registration_formState extends State<registration_form> {
                     ),
                     hintText: 'Enter your contact number',
                   ),
+                  onChanged: (value){
+                    contactNumber=value;
+                  },
                 ),
                 const SizedBox(
                   height: 30.0,
@@ -100,6 +127,9 @@ class _registration_formState extends State<registration_form> {
                     ),
                     hintText: 'Enter your address',
                   ),
+                  onChanged: (value){
+                    address=value;
+                  },
                 ),
                 const SizedBox(
                   height: 30.0,
@@ -171,7 +201,23 @@ class _registration_formState extends State<registration_form> {
                   color: kAccentColor1,
                   height:40.0,
                   minWidth: double.infinity,
-                  onPressed: () {},
+                  onPressed: () async {
+                    try{
+                      await _firestore.collection('customers').doc(_auth.currentUser?.uid).set(
+                          {
+                            'email': _auth.currentUser?.email,
+                            'name': name,
+                            'address': address,
+                            'contactNumber': contactNumber,
+                            'location':GeoPoint(latitude,longitude),
+                          }
+                      );
+                      Navigator.pushNamed(context, '/delivery_tracking');
+                    }
+                    catch(e){
+                      print(e);
+                    }
+                  },
                   child: const Text(
                     'Submit',
                     style: kButtonTextStyle,

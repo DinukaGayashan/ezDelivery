@@ -1,5 +1,5 @@
-import 'package:ezdelivery/schedule_time.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'constants.dart';
 import 'sign_in.dart';
 import 'sign_up.dart';
@@ -9,7 +9,9 @@ import 'share_account.dart';
 import 'settings.dart';
 import 'registration_form.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const ezDelivery());
 }
 
@@ -24,7 +26,7 @@ class ezDelivery extends StatelessWidget {
         primaryColor: kBaseColor1,
         scaffoldBackgroundColor: kBaseColor2,
       ),
-      initialRoute: '/registration_form',
+      initialRoute: '/sign_in',
       routes: {
         '/sign_up': (context) => sign_up(),
         '/sign_in': (context) => sign_in(),
