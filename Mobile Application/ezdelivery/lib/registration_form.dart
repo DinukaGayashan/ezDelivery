@@ -17,6 +17,8 @@ class _registration_formState extends State<registration_form> {
   late String name,address,contactNumber;
   final _auth=FirebaseAuth.instance;
   final FirebaseFirestore _firestore=FirebaseFirestore.instance;
+  final TextEditingController latitudeController = TextEditingController();
+  final TextEditingController longitudeController = TextEditingController();
 
   @override
   void initState() {
@@ -31,12 +33,6 @@ class _registration_formState extends State<registration_form> {
     catch(e){
       print(e);
     }
-  }
-
-  void getLocation() async {
-    Position location = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation);
-    latitude=location.latitude.toDouble();
-    longitude=location.longitude.toDouble();
   }
 
   @override
@@ -144,6 +140,7 @@ class _registration_formState extends State<registration_form> {
                     SizedBox(
                       width: 120.0,
                       child: TextFormField(
+                        controller: longitudeController,
                         keyboardType: const TextInputType.numberWithOptions(),
                         style: kDetailsStyle,
                         cursorHeight: 25,
@@ -164,6 +161,7 @@ class _registration_formState extends State<registration_form> {
                     SizedBox(
                       width: 120.0,
                       child: TextFormField(
+                        controller: latitudeController,
                         keyboardType: const TextInputType.numberWithOptions(),
                         style: kDetailsStyle,
                         cursorHeight: 25,
@@ -185,8 +183,12 @@ class _registration_formState extends State<registration_form> {
                       style: TextButton.styleFrom(
                         textStyle: kInstructionStyle,
                       ),
-                      onPressed: () {
-                        getLocation();
+                      onPressed: () async {
+                        Position location = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation);
+                        latitude=location.latitude.toDouble();
+                        longitude=location.longitude.toDouble();
+                        latitudeController.text=latitude.roundToDouble().toString();
+                        longitudeController.text=longitude.roundToDouble().toString();
                       },
                       child: const Text(
                           'Get Current\nLocation'

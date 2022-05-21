@@ -222,7 +222,7 @@ class _sign_inState extends State<sign_in> {
                             }else if(result.data.toString()=='distributor'){
                               Navigator.pushNamed(context, '/delivery_tracking');
                             }else{
-                              print("not registered");
+                              Navigator.pushNamed(context, '/registration_form');
                             }
                           }catch(e){
                             print(e);

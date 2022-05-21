@@ -26,7 +26,7 @@ class ezDelivery extends StatelessWidget {
         primaryColor: kBaseColor1,
         scaffoldBackgroundColor: kBaseColor2,
       ),
-      initialRoute: '/sign_in',
+      initialRoute: '/registration_form',
       routes: {
         '/sign_up': (context) => sign_up(),
         '/sign_in': (context) => sign_in(),

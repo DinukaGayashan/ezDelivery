@@ -21,3 +21,20 @@ exports.checkUserRole = functions.https.onCall(async (data, context) => {
     return "no";
   }
 });
+
+async function checkUsersForKey(key, col) {
+  const userCollectionRef = admin.firestore().collection(col);
+  const querySnapshot = await userCollectionRef
+      .where("secretKey", "==", key).get();
+  return querySnapshot.size >= 1;
+}
+
+exports.getSecretKey = functions.https.onCall(async (data, context) => {
+  const number=Math.round(Math.random()*1000000);
+  const checkCustomers = await checkUsersForKey(number, "customers");
+  if (checkCustomers) {
+    this.getSecretKey();
+  } else {
+    return number.toString();
+  }
+});

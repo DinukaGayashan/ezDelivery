@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'constants.dart';
 import 'customer_navigation_drawer.dart';
 
-class share_account extends StatelessWidget {
+class share_account extends StatefulWidget {
   const share_account({Key? key}) : super(key: key);
+
+  @override
+  State<share_account> createState() => _share_accountState();
+}
+
+class _share_accountState extends State<share_account> {
+
+  final _functions=FirebaseFunctions.instance;
+  final TextEditingController keyController=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,16 +51,17 @@ class share_account extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width-80.0,
                       child: TextFormField(
+                        controller: keyController,
                         enabled: false,
                         style: kDetailsStyle,
                         cursorHeight: 25,
                         cursorColor: kAccentColor1,
                         decoration: const InputDecoration(
                           disabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: kAccentColor1,
-                              ),
+                            borderSide: BorderSide(
+                              color: kAccentColor1,
                             ),
+                          ),
                           hintText: 'Generate a key to share',
                         ),
                       ),
@@ -74,7 +85,16 @@ class share_account extends StatelessWidget {
                   color: kAccentColor1,
                   height:40.0,
                   minWidth: double.infinity,
-                  onPressed: () {},
+                  onPressed: () async {
+                    try{
+                      HttpsCallable secretKey=_functions.httpsCallable('getSecretKey');
+                      final result=await secretKey.call();
+                      keyController.text=result.data.toString();
+                    }
+                    catch(e){
+                      print(e);
+                    }
+                  },
                   child: const Text(
                     'Generate Key',
                     style: kButtonTextStyle,
@@ -88,3 +108,4 @@ class share_account extends StatelessWidget {
     );
   }
 }
+
