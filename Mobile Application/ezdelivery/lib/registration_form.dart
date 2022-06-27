@@ -16,7 +16,7 @@ class _registration_formState extends State<registration_form> {
   late double latitude,longitude;
   late String name,address,contactNumber;
   final _auth=FirebaseAuth.instance;
-  final FirebaseFirestore _firestore=FirebaseFirestore.instance;
+  final _firestore=FirebaseFirestore.instance;
   final TextEditingController latitudeController = TextEditingController();
   final TextEditingController longitudeController = TextEditingController();
 
@@ -153,6 +153,9 @@ class _registration_formState extends State<registration_form> {
                           ),
                           hintText: 'Longitude',
                         ),
+                        onChanged: (value){
+                          longitude=double.parse(value);
+                        },
                       ),
                     ),
                     const SizedBox(
@@ -174,6 +177,9 @@ class _registration_formState extends State<registration_form> {
                           ),
                           hintText: 'Latitude',
                         ),
+                        onChanged: (value){
+                          latitude=double.parse(value);
+                        },
                       ),
                     ),
                     const SizedBox(
@@ -214,7 +220,7 @@ class _registration_formState extends State<registration_form> {
                             'location':GeoPoint(latitude,longitude),
                           }
                       );
-                      Navigator.pushNamed(context, '/delivery_tracking');
+                      Navigator.pushReplacementNamed(context, '/delivery_tracking');
                     }
                     catch(e){
                       print(e);

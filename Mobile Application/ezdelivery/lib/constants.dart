@@ -5,7 +5,8 @@ const kBaseColor2=Color(0xFFffffff);
 const kAccentColor1=Color(0xFF0c4d5f);
 const kAccentColor2=Color(0xFFf56b2a);
 const kAccentColor3=Color(0xFFa6bebe);
-const kTransparentColor=Color(0x29a6bebe);
+const kTransparentColor1=Color(0x29a6bebe);
+const kTransparentColor2=Color(0x660c4d5f);
 
 const TextStyle kNameStyle = TextStyle(
   fontSize: 25,
@@ -56,4 +57,21 @@ const TextStyle kDrawerTextStyle = TextStyle(
   color: kAccentColor1,
   letterSpacing: 1.5,
 );
+
+Widget card(BuildContext context, Widget content){
+  return Padding(
+    padding: const EdgeInsets.all(5.0),
+    child: Card(
+      color: kTransparentColor2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(2),
+        side: BorderSide.none,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: content,
+        ),
+    ),
+  );
+}
 

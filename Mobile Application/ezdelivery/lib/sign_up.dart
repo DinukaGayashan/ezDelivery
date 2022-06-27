@@ -66,7 +66,7 @@ class _sign_upState extends State<sign_up> {
                       hintText: 'Enter email',
                       contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                       border: InputBorder.none,
-                      fillColor: kTransparentColor,
+                      fillColor: kTransparentColor1,
                       filled: true,
                     ),
                     onChanged: (value){
@@ -88,7 +88,7 @@ class _sign_upState extends State<sign_up> {
                       hintText: 'Enter password',
                       contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                       border: InputBorder.none,
-                      fillColor: kTransparentColor,
+                      fillColor: kTransparentColor1,
                       filled: true,
                     ),
                     onChanged: (value){
@@ -110,7 +110,7 @@ class _sign_upState extends State<sign_up> {
                       hintText: 'Re-enter password',
                       contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                       border: InputBorder.none,
-                      fillColor: kTransparentColor,
+                      fillColor: kTransparentColor1,
                       filled: true,
                     ),
                     onChanged: (value){
@@ -135,7 +135,7 @@ class _sign_upState extends State<sign_up> {
                         try{
                           final newUser=await _auth.createUserWithEmailAndPassword(email: email, password: password1);
                           if(newUser!=null){
-                            Navigator.pushNamed(context, '/registration_form');
+                            Navigator.pushReplacementNamed(context, '/registration_form');
                           }
                         }
                         catch(e){
@@ -169,7 +169,7 @@ class _sign_upState extends State<sign_up> {
                           textStyle: kInstructionStyle,
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(context, '/sign_in');
+                          Navigator.pushReplacementNamed(context, '/sign_in');
                         },
                         child: const Text('Sign in'),
                       ),

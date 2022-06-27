@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'constants.dart';
@@ -12,11 +14,24 @@ class share_account extends StatefulWidget {
 
 class _share_accountState extends State<share_account> {
 
+  final _auth=FirebaseAuth.instance;
   final _functions=FirebaseFunctions.instance;
+  final _firestore=FirebaseFirestore.instance;
   final TextEditingController keyController=TextEditingController();
+
+
+  User? user;
 
   @override
   Widget build(BuildContext context) {
+
+    try{
+      user=_auth.currentUser;
+    }
+    catch(e){
+      print(e);
+    }
+
     return Scaffold(
       backgroundColor: kAccentColor3,
       appBar: AppBar(
@@ -37,20 +52,22 @@ class _share_accountState extends State<share_account> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 const SizedBox(
-                  height: 10.0,
-                ),
-                const Text(
-                  'Secret Key',
-                  style: kInstructionStyle2,
-                ),
-                const SizedBox(
                   height: 20.0,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    const Text(
+                      'Key',
+                      style: kInstructionStyle2,
+                    ),
+                    const SizedBox(
+                      width: 10.0,
+                    ),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width-80.0,
+                      width: MediaQuery.of(context).size.width-200.0,
                       child: TextFormField(
+                        textAlign: TextAlign.center,
                         controller: keyController,
                         enabled: false,
                         style: kDetailsStyle,
@@ -62,17 +79,19 @@ class _share_accountState extends State<share_account> {
                               color: kAccentColor1,
                             ),
                           ),
-                          hintText: 'Generate a key to share',
+                          hintText: 'Generate a key',
                         ),
                       ),
                     ),
                     MaterialButton(
                       minWidth: 50.0,
                       height: 70.0,
-                      onPressed: (){},
+                      onPressed: (){
+
+                      },
                       child: const Icon(
                         Icons.copy_outlined,
-                        size: 28.0,
+                        size: 25.0,
                         color: kAccentColor1,
                       ),
                     ),
@@ -89,6 +108,13 @@ class _share_accountState extends State<share_account> {
                     try{
                       HttpsCallable secretKey=_functions.httpsCallable('getSecretKey');
                       final result=await secretKey.call();
+
+                      await _firestore.collection('customers').doc(user?.uid).set(
+                          {
+                            'key':result.data.toString(),
+                          }, SetOptions(merge: true)
+                      );
+
                       keyController.text=result.data.toString();
                     }
                     catch(e){

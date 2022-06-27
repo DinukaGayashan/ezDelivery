@@ -118,7 +118,7 @@ class _sign_inState extends State<sign_in> {
                       hintText: 'Enter email',
                       contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                       border: InputBorder.none,
-                      fillColor: kTransparentColor,
+                      fillColor: kTransparentColor1,
                       filled: true,
                     ),
                   ),
@@ -141,7 +141,7 @@ class _sign_inState extends State<sign_in> {
                       hintText: 'Enter password',
                       contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                       border: InputBorder.none,
-                      fillColor: kTransparentColor,
+                      fillColor: kTransparentColor1,
                       filled: true,
                     ),
                   ),
@@ -209,6 +209,7 @@ class _sign_inState extends State<sign_in> {
                     minWidth: double.infinity,
                     onPressed: () async{
                       try{
+                        _handleRememberMe(rememberMeToggle);
                         email=_emailController.text;
                         password=_passwordController.text;
                         final user= await _auth.signInWithEmailAndPassword(email: email, password: password);
@@ -218,11 +219,11 @@ class _sign_inState extends State<sign_in> {
                             HttpsCallable checkUserRole=_functions.httpsCallable('checkUserRole');
                             final result=await checkUserRole.call(<String, dynamic>{'email': email,});
                             if(result.data.toString()=='customer'){
-                              Navigator.pushNamed(context, '/delivery_tracking');
+                              Navigator.pushReplacementNamed(context, '/customer_main_menu');
                             }else if(result.data.toString()=='distributor'){
-                              Navigator.pushNamed(context, '/delivery_tracking');
+                              Navigator.pushReplacementNamed(context, '/deliverer_main_menu');
                             }else{
-                              Navigator.pushNamed(context, '/registration_form');
+                              Navigator.pushReplacementNamed(context, '/registration_form');
                             }
                           }catch(e){
                             print(e);
@@ -256,7 +257,7 @@ class _sign_inState extends State<sign_in> {
                           textStyle: kInstructionStyle,
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(context, '/sign_up');
+                          Navigator.pushReplacementNamed(context, '/sign_up');
                         },
                         child: const Text('Sign up'),
                       ),

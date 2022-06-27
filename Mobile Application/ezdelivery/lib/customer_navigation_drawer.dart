@@ -12,24 +12,18 @@ class customer_navigation_drawer extends StatefulWidget {
 class _customer_navigation_drawerState extends State<customer_navigation_drawer> {
 
   final _auth=FirebaseAuth.instance;
+  User? user;
 
   @override
-  void initState() {
-    super.initState();
-    getUser();
-  }
+  Widget build(BuildContext context) {
 
-  void getUser(){
     try{
-      final User? user=_auth.currentUser;
+      user=_auth.currentUser;
     }
     catch(e){
       print(e);
     }
-  }
 
-  @override
-  Widget build(BuildContext context) {
     return Drawer(
       backgroundColor: kAccentColor2,
       child: ListView(

@@ -47,7 +47,7 @@ class deliverer_navigation_drawer extends StatelessWidget{
               style: kDrawerTextStyle,
             ),
             onTap: (){
-              Navigator.pushNamed(context, '/share_account');
+              Navigator.pushNamed(context, '/add_delivery');
             },
           ),
           ListTile(
