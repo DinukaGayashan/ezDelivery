@@ -1,30 +1,22 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ezdelivery/delivery_tracking.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'customer_navigation_drawer.dart';
-import 'deliverer_navigation_drawer.dart';
 
 class customer_main_menu extends StatefulWidget {
-  const customer_main_menu({Key? key}) : super(key: key);
-
+  const customer_main_menu(this.user,this.packages,{Key? key}) : super(key: key);
+  final User? user;
+  final List<dynamic> packages;
   @override
   State<customer_main_menu> createState() => _customer_main_menuState();
 }
 
 class _customer_main_menuState extends State<customer_main_menu> {
-  final _auth=FirebaseAuth.instance;
-  User? user;
 
   @override
   Widget build(BuildContext context) {
-
-    try{
-      user=_auth.currentUser;
-    }
-    catch(e){
-      print(e);
-    }
-
     return Scaffold(
       backgroundColor: kAccentColor3,
       appBar: AppBar(
@@ -36,7 +28,7 @@ class _customer_main_menuState extends State<customer_main_menu> {
           style: kSubSubjectStyle,
         ),
       ),
-      drawer: customer_navigation_drawer(),
+      drawer: const customer_navigation_drawer(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -45,11 +37,21 @@ class _customer_main_menuState extends State<customer_main_menu> {
                 child: card(context,
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    child: Text('Packages',style: kSubSubjectStyle,),
+                    child: Column(
+                      children: [
+                        const Text('Packages',style: kSubSubjectStyle,),
+                        Text(
+                            'No of packages: '+widget.packages.length.toString(),
+                          style: kInstructionStyle2,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 onTap: (){
-
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return delivery_tracking(widget.user,widget.packages,);
+                  }));
                 },
               ),
             ],

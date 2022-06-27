@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'add_delivery.dart';
 import 'constants.dart';
+import 'customer_loading.dart';
 import 'customer_main_menu.dart';
 import 'deliverer_main_menu.dart';
 import 'sign_in.dart';
@@ -35,14 +36,13 @@ class ezDelivery extends StatelessWidget {
         '/sign_up': (context) => sign_up(),
         '/sign_in': (context) => sign_in(),
         '/registration_form': (context) => registration_form(),
-        '/customer_main_menu': (context)=>customer_main_menu(),
-        '/deliverer_main_menu': (context)=>deliverer_main_menu(),
-        '/delivery_tracking': (context) => delivery_tracking(),
-        '/schedule_time': (context) => schedule_time(),
+        '/customer_loading': (context)=>customer_loading(),
+        //'/deliverer_loading': (context)=>deliverer_loading(),
+        /*'/schedule_time': (context) => schedule_time(),
         '/share_account': (context) => share_account(),
         '/settings': (context) => settings(),
         '/customer_tracking': (context) => customer_tracking(),
-        '/add_delivery': (context) => add_delivery(),
+        '/add_delivery': (context) => add_delivery(),*/
       },
     );
   }

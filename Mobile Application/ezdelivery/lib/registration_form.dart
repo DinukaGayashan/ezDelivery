@@ -220,7 +220,7 @@ class _registration_formState extends State<registration_form> {
                             'location':GeoPoint(latitude,longitude),
                           }
                       );
-                      Navigator.pushReplacementNamed(context, '/delivery_tracking');
+                      Navigator.pushReplacementNamed(context, '/customer_loading');
                     }
                     catch(e){
                       print(e);

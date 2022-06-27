@@ -219,7 +219,7 @@ class _sign_inState extends State<sign_in> {
                             HttpsCallable checkUserRole=_functions.httpsCallable('checkUserRole');
                             final result=await checkUserRole.call(<String, dynamic>{'email': email,});
                             if(result.data.toString()=='customer'){
-                              Navigator.pushReplacementNamed(context, '/customer_main_menu');
+                              Navigator.pushReplacementNamed(context, '/customer_loading');
                             }else if(result.data.toString()=='distributor'){
                               Navigator.pushReplacementNamed(context, '/deliverer_main_menu');
                             }else{

@@ -149,7 +149,6 @@ class add_delivery extends StatelessWidget {
                           if(result.data=='true'){
                             final customers=await _firestore.collection('customers').where('key',isEqualTo: customerKey).get();
                             for (var c in customers.docs){
-
                               await _firestore.collection('packages').doc().set(
                                   {
                                     'customerEmail':c.data()['email'],
