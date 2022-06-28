@@ -15,6 +15,16 @@ class customer_main_menu extends StatefulWidget {
 
 class _customer_main_menuState extends State<customer_main_menu> {
 
+  List<dynamic> getPackagesWithAttribute({required String attribute, required String state}){
+    List<dynamic> ps=[];
+    for(var p in widget.packages){
+      if(p[attribute]==state){
+        ps.add(p);
+      }
+    }
+    return ps;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,16 +43,18 @@ class _customer_main_menuState extends State<customer_main_menu> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              const SizedBox(height: 10,),
               InkWell(
                 child: card(context,
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('Packages',style: kSubSubjectStyle,),
+                        const Text('Packages',style: kCardStyle1,),
                         Text(
-                            'No of packages: '+widget.packages.length.toString(),
-                          style: kInstructionStyle2,
+                          getPackagesWithAttribute(attribute: 'status', state: 'in_transit').length.toString()+' In transit, '+getPackagesWithAttribute(attribute: 'status', state: 'completed').length.toString()+' Completed',
+                          style: kCardStyle2,
                         ),
                       ],
                     ),

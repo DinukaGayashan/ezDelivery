@@ -38,6 +38,18 @@ const TextStyle kInstructionStyle2 = TextStyle(
   color: kBaseColor1,
 );
 
+const TextStyle kCardStyle1 = TextStyle(
+  fontSize: 20,
+  fontFamily: 'Poppins',
+  color: kBaseColor2,
+);
+
+const TextStyle kCardStyle2 = TextStyle(
+  fontSize: 15,
+  fontFamily: 'Poppins',
+  color: kBaseColor2,
+);
+
 const TextStyle kDetailsStyle = TextStyle(
   fontSize: 20,
   fontFamily: 'Poppins',
@@ -60,7 +72,7 @@ const TextStyle kDrawerTextStyle = TextStyle(
 
 Widget card(BuildContext context, Widget content){
   return Padding(
-    padding: const EdgeInsets.all(5.0),
+    padding: const EdgeInsets.symmetric(vertical: 1,horizontal: 5),
     child: Card(
       color: kTransparentColor2,
       shape: RoundedRectangleBorder(

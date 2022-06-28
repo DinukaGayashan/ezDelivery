@@ -29,14 +29,24 @@ class _delivery_trackingState extends State<delivery_tracking> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              for(var p=0;p<widget.packages.length;p++)
+              const SizedBox(height: 10,),
+              for(var p in widget.packages)
                 GestureDetector(
                   child: card(context,
                     SizedBox(
                       width: MediaQuery.of(context).size.width,
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Packages'+'status',style: kSubSubjectStyle,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(p['packageName'],style: kCardStyle1,),
+                              Text(p['status'],style: kCardStyle2,),
+                            ],
+                          ),
+                          Text('Tracking Number '+p['trackingNumber'],style: kCardStyle2,),
+                          Text('Added time '+p['addedTime'].toDate().toString(),style: kCardStyle2,),
                         ],
                       ),
                     ),

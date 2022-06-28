@@ -23,7 +23,7 @@ class _customer_loadingState extends State<customer_loading> {
     final userDoc=await _firestore.collection('customers').doc(user?.uid).get();
     final ps=userDoc['packages'];
     for(var p in ps){
-      packages.add(await userDoc['packages'][0].get());
+      packages.add(await p.get());
     }
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
       return customer_main_menu(user,packages,);
@@ -40,9 +40,10 @@ class _customer_loadingState extends State<customer_loading> {
     getData();
 
     return const Scaffold(
+      backgroundColor: kAccentColor1,
       body: Center(
         child: SpinKitDoubleBounce(
-          color: kAccentColor1,
+          color: kAccentColor3,
           size: 100,
         ),
       ),
