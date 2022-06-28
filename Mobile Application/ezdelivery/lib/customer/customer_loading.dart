@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ezdelivery/constants.dart';
-import 'package:ezdelivery/customer_main_menu.dart';
-import 'package:ezdelivery/delivery_tracking.dart';
+import 'customer_main_menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';

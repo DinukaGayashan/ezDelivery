@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
-import 'customer_navigation_drawer.dart';
+import '../constants.dart';
 
 class schedule_time extends StatelessWidget {
   const schedule_time({Key? key}) : super(key: key);
@@ -18,7 +17,6 @@ class schedule_time extends StatelessWidget {
           style: kSubSubjectStyle,
         ),
       ),
-      drawer: customer_navigation_drawer(),
       body: const SafeArea(
         child: SingleChildScrollView(
         ),

@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ezdelivery/delivery_tracking.dart';
+import 'delivery_tracking.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import '../constants.dart';
 import 'customer_navigation_drawer.dart';
 
 class customer_main_menu extends StatefulWidget {

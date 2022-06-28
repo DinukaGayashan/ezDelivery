@@ -2,8 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_functions/cloud_functions.dart';
-import 'constants.dart';
-import 'customer_navigation_drawer.dart';
+import '../constants.dart';
 
 class share_account extends StatefulWidget {
   const share_account({Key? key}) : super(key: key);
@@ -43,7 +42,6 @@ class _share_accountState extends State<share_account> {
           style: kSubSubjectStyle,
         ),
       ),
-      drawer: customer_navigation_drawer(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(

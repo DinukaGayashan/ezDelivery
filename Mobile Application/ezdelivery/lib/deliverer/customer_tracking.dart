@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'constants.dart';
-import 'customer_navigation_drawer.dart';
-import 'deliverer_navigation_drawer.dart';
+import '../constants.dart';
+
 
 class customer_tracking extends StatelessWidget {
   customer_tracking({Key? key}) : super(key: key);
@@ -31,7 +30,6 @@ class customer_tracking extends StatelessWidget {
           style: kSubSubjectStyle,
         ),
       ),
-      drawer: deliverer_navigation_drawer(),
       body: const SafeArea(
         child: SingleChildScrollView(
         ),

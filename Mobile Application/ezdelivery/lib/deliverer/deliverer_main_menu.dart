@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'constants.dart';
-import 'customer_navigation_drawer.dart';
+import '../constants.dart';
 import 'deliverer_navigation_drawer.dart';
 
 class deliverer_main_menu extends StatelessWidget {

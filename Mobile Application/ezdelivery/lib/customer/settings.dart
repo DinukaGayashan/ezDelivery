@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
-import 'customer_navigation_drawer.dart';
+import '../constants.dart';
 
 class settings extends StatelessWidget {
   const settings({Key? key}) : super(key: key);
@@ -18,7 +17,6 @@ class settings extends StatelessWidget {
           style: kSubSubjectStyle,
         ),
       ),
-      drawer: customer_navigation_drawer(),
       body: const SafeArea(
         child: SingleChildScrollView(
         ),
