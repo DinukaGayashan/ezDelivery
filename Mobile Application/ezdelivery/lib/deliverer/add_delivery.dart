@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'constants.dart';
-import 'deliverer_navigation_drawer.dart';
+import '../constants.dart';
+import '../deliverer_navigation_drawer.dart';
 
 class add_delivery extends StatelessWidget {
   add_delivery({Key? key}) : super(key: key);
