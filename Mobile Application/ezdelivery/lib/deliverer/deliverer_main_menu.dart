@@ -31,8 +31,50 @@ class deliverer_main_menu extends StatelessWidget {
         ),
       ),
       drawer: deliverer_navigation_drawer(),
-      body: const SafeArea(
+      body: SafeArea(
         child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 10,),
+              InkWell(
+                child: card(context,
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text('Add packages',style: kCardStyle1,),
+                        Text(
+                          'Add packages to be delivered',
+                          style: kCardStyle2,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+              ),
+
+              InkWell(
+                child: card(context,
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text('Check Customer Availability',style: kCardStyle1,),
+                        Text(
+                          'Check whether the customers of packages are available',
+                          style: kCardStyle2,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+              ),
+            ],
+          ),
         ),
       ),
     );

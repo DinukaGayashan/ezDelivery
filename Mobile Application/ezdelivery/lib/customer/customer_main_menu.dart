@@ -66,6 +66,44 @@ class _customer_main_menuState extends State<customer_main_menu> {
                   }));
                 },
               ),
+
+              InkWell(
+                child: card(context,
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text('Schedule Time',style: kCardStyle1,),
+                        Text(
+                          'Add off time from the delivery location',
+                          style: kCardStyle2,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+              ),
+
+              InkWell(
+                child: card(context,
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text('Share Account',style: kCardStyle1,),
+                        Text(
+                          'Generate a key and provide that to deliverer',
+                          style: kCardStyle2,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+              ),
             ],
           ),
         ),

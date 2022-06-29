@@ -37,12 +37,15 @@ class ezDelivery extends StatelessWidget {
         '/sign_in': (context) => sign_in(),
         '/registration_form': (context) => registration_form(),
         '/customer_loading': (context)=>customer_loading(),
-        //'/deliverer_loading': (context)=>deliverer_loading(),
-        /*'/schedule_time': (context) => schedule_time(),
+        '/schedule_time': (context) => schedule_time(),
+        '/share_account': (context) => share_account(),
+        '/deliverer_main_menu': (context)=>deliverer_main_menu(),
+    '/add_delivery': (context) => add_delivery(),
+        /*
         '/share_account': (context) => share_account(),
         '/settings': (context) => settings(),
         '/customer_tracking': (context) => customer_tracking(),
-        '/add_delivery': (context) => add_delivery(),*/
+        '*/
       },
     );
   }

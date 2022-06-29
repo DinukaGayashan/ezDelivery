@@ -17,9 +17,12 @@ class _share_accountState extends State<share_account> {
   final _functions=FirebaseFunctions.instance;
   final _firestore=FirebaseFirestore.instance;
   final TextEditingController keyController=TextEditingController();
-
-
   User? user;
+
+  void getData() async {
+    final userDoc=await _firestore.collection('customers').doc(user?.uid).get();
+    keyController.text=userDoc['key'];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +33,8 @@ class _share_accountState extends State<share_account> {
     catch(e){
       print(e);
     }
+
+    getData();
 
     return Scaffold(
       backgroundColor: kAccentColor3,
