@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'delivery_tracking.dart';
+
 class customer_navigation_drawer extends StatefulWidget {
-  const customer_navigation_drawer({Key? key}) : super(key: key);
+  const customer_navigation_drawer(this.user,this.packages,{Key? key}) : super(key: key);
+  final User? user;
+  final List<dynamic> packages;
 
   @override
   State<customer_navigation_drawer> createState() => _customer_navigation_drawerState();
@@ -58,7 +62,10 @@ class _customer_navigation_drawerState extends State<customer_navigation_drawer>
               style: kDrawerTextStyle,
             ),
             onTap: (){
-              Navigator.pushNamed(context, '/delivery_tracking');
+              Navigator.pop(context);
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return delivery_tracking(widget.user,widget.packages,);
+              }));
             },
           ),
           ListTile(
@@ -67,6 +74,7 @@ class _customer_navigation_drawerState extends State<customer_navigation_drawer>
               style: kDrawerTextStyle,
             ),
             onTap: (){
+              Navigator.pop(context);
               Navigator.pushNamed(context, '/schedule_time');
             },
           ),
@@ -76,6 +84,7 @@ class _customer_navigation_drawerState extends State<customer_navigation_drawer>
               style: kDrawerTextStyle,
             ),
             onTap: (){
+              Navigator.pop(context);
               Navigator.pushNamed(context, '/share_account');
             },
           ),
@@ -85,6 +94,7 @@ class _customer_navigation_drawerState extends State<customer_navigation_drawer>
               style: kDrawerTextStyle,
             ),
             onTap: (){
+              Navigator.pop(context);
               Navigator.pushNamed(context, '/settings');
             },
           ),
@@ -95,7 +105,7 @@ class _customer_navigation_drawerState extends State<customer_navigation_drawer>
             ),
             onTap: (){
               _auth.signOut();
-              Navigator.pushNamed(context, '/sign_in');
+              Navigator.pushReplacementNamed(context, '/sign_in');
             },
           ),
         ],

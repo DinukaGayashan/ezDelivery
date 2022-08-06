@@ -6,7 +6,8 @@ import '../constants.dart';
 import 'customer_navigation_drawer.dart';
 
 class customer_main_menu extends StatefulWidget {
-  const customer_main_menu(this.user,this.packages,{Key? key}) : super(key: key);
+  const customer_main_menu(this.user, this.packages, {Key? key})
+      : super(key: key);
   final User? user;
   final List<dynamic> packages;
   @override
@@ -14,19 +15,34 @@ class customer_main_menu extends StatefulWidget {
 }
 
 class _customer_main_menuState extends State<customer_main_menu> {
+  final _firestore=FirebaseFirestore.instance;
 
-  List<dynamic> getPackagesWithAttribute({required String attribute, required String state}){
-    List<dynamic> ps=[];
-    for(var p in widget.packages){
-      if(p[attribute]==state){
+  List<dynamic> getPackagesWithAttribute(
+      {required String attribute, required String state}) {
+    List<dynamic> ps = [];
+    for (var p in widget.packages) {
+      if (p[attribute] == state) {
         ps.add(p);
       }
     }
     return ps;
   }
 
+  String key='';
+
+  void getData() async {
+    final userDoc=await _firestore.collection('customers').doc(widget.user?.uid).get();
+    key=userDoc['key'];
+    setState(() {
+      key;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    getData();
+
     return Scaffold(
       backgroundColor: kAccentColor3,
       appBar: AppBar(
@@ -38,43 +54,68 @@ class _customer_main_menuState extends State<customer_main_menu> {
           style: kSubSubjectStyle,
         ),
       ),
-      drawer: const customer_navigation_drawer(),
+      drawer: customer_navigation_drawer(widget.user, widget.packages),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               InkWell(
-                child: card(context,
+                child: card(
+                  context,
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('Packages',style: kCardStyle1,),
+                        const Text(
+                          'Packages',
+                          style: kCardStyle1,
+                        ),
+                        const Text(
+                          'Package delivery details',
+                          style: kCardStyle2,
+                        ),
                         Text(
-                          getPackagesWithAttribute(attribute: 'status', state: 'in_transit').length.toString()+' In transit, '+getPackagesWithAttribute(attribute: 'status', state: 'completed').length.toString()+' Completed',
+                          getPackagesWithAttribute(
+                                      attribute: 'status', state: 'in_transit')
+                                  .length
+                                  .toString() +
+                              ' In transit, ' +
+                              getPackagesWithAttribute(
+                                      attribute: 'status', state: 'completed')
+                                  .length
+                                  .toString() +
+                              ' Completed',
                           style: kCardStyle2,
                         ),
                       ],
                     ),
                   ),
                 ),
-                onTap: (){
+                onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return delivery_tracking(widget.user,widget.packages,);
+                    return delivery_tracking(
+                      widget.user,
+                      widget.packages,
+                    );
                   }));
                 },
               ),
-
               InkWell(
-                child: card(context,
+                child: card(
+                  context,
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
-                        Text('Schedule Time',style: kCardStyle1,),
+                        Text(
+                          'Schedule Time',
+                          style: kCardStyle1,
+                        ),
                         Text(
                           'Add off time from the delivery location',
                           style: kCardStyle2,
@@ -83,26 +124,37 @@ class _customer_main_menuState extends State<customer_main_menu> {
                     ),
                   ),
                 ),
-
+                onTap: () {
+                  Navigator.pushNamed(context, '/schedule_time');
+                },
               ),
-
               InkWell(
-                child: card(context,
+                child: card(
+                  context,
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text('Share Account',style: kCardStyle1,),
+                      children: [
+                        Text(
+                          'Share Account',
+                          style: kCardStyle1,
+                        ),
                         Text(
                           'Generate a key and provide that to deliverer',
+                          style: kCardStyle2,
+                        ),
+                        Text(
+                          key,
                           style: kCardStyle2,
                         ),
                       ],
                     ),
                   ),
                 ),
-
+                onTap: () {
+                  Navigator.pushNamed(context, '/share_account');
+                },
               ),
             ],
           ),
