@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
 import 'package:duration_picker/duration_picker.dart';
@@ -12,6 +14,9 @@ class schedule_time extends StatefulWidget {
 class _schedule_timeState extends State<schedule_time> {
   DateTime dateTime=DateTime.now();
   Duration duration=const Duration(hours: 1);
+  final _auth=FirebaseAuth.instance;
+  final _firestore=FirebaseFirestore.instance;
+  User? user;
 
   Future pickDateTime() async{
     DateTime? date=await pickDate();
@@ -40,6 +45,14 @@ class _schedule_timeState extends State<schedule_time> {
 
   @override
   Widget build(BuildContext context) {
+
+    try{
+      user=_auth.currentUser;
+    }
+    catch(e){
+      print(e);
+    }
+
     return Scaffold(
       backgroundColor: kAccentColor3,
       appBar: AppBar(
@@ -96,7 +109,19 @@ class _schedule_timeState extends State<schedule_time> {
                   color: kAccentColor1,
                   height:40.0,
                   minWidth: double.infinity,
-                  onPressed: () async {   },
+                  onPressed: () async {
+                    final Map<String,dynamic> outTimes={'outFrom':dateTime,'outTime':duration.inHours};
+                    try{
+                      await _firestore.collection('customers').doc(user?.uid).set(
+                          {
+                            'outTimes':outTimes,
+                          }, SetOptions(merge: true)
+                      );
+                    }
+                    catch(e){
+                      print(e);
+                    }
+                  },
                   child: const Text(
                     'Add off time',
                     style: kButtonTextStyle,

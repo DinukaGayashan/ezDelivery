@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:flutter/services.dart';
 import '../constants.dart';
 
 class share_account extends StatefulWidget {
@@ -90,7 +91,7 @@ class _share_accountState extends State<share_account> {
                       minWidth: 50.0,
                       height: 70.0,
                       onPressed: (){
-
+                        Clipboard.setData(ClipboardData(text: keyController.text));
                       },
                       child: const Icon(
                         Icons.copy_outlined,

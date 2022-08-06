@@ -41,9 +41,10 @@ class ezDelivery extends StatelessWidget {
         '/share_account': (context) => share_account(),
         '/deliverer_main_menu': (context) => deliverer_main_menu(),
         '/add_delivery': (context) => add_delivery(),
+        '/settings': (context) => settings(),
         /*
         '/share_account': (context) => share_account(),
-        '/settings': (context) => settings(),
+
         '/customer_tracking': (context) => customer_tracking(),
         '*/
       },

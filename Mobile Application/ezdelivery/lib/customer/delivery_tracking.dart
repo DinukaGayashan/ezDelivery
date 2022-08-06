@@ -31,7 +31,7 @@ class _delivery_trackingState extends State<delivery_tracking> {
             children: [
               const SizedBox(height: 10,),
               for(var p in widget.packages)
-                GestureDetector(
+                InkWell(
                   child: card(context,
                     SizedBox(
                       width: MediaQuery.of(context).size.width,

@@ -28,13 +28,25 @@ class _customer_main_menuState extends State<customer_main_menu> {
     return ps;
   }
 
-  String key='';
+  String? key=null;
+  late DateTime? outFrom=null;
+  late int? outTime=null;
 
   void getData() async {
     final userDoc=await _firestore.collection('customers').doc(widget.user?.uid).get();
-    key=userDoc['key'];
+    try{
+      key=userDoc['key'];
+    }catch(e){}
+
+    try{
+      outFrom=userDoc['outTimes']['outFrom'].toDate();
+      outTime=userDoc['outTimes']['outTime'];
+    }catch(e){}
+
+
     setState(() {
       key;
+      outTime;
     });
   }
 
@@ -111,15 +123,20 @@ class _customer_main_menuState extends State<customer_main_menu> {
                     width: MediaQuery.of(context).size.width,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
+                      children: [
+                        const Text(
                           'Schedule Time',
                           style: kCardStyle1,
                         ),
-                        Text(
+                        const Text(
                           'Add off time from the delivery location',
                           style: kCardStyle2,
                         ),
+                        outFrom!=null?
+                        Text(
+                          'Out from '+outFrom.toString()+' for '+outTime.toString()+' hours',
+                          style: kCardStyle2,
+                        ):SizedBox(),
                       ],
                     ),
                   ),
@@ -136,18 +153,19 @@ class _customer_main_menuState extends State<customer_main_menu> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'Share Account',
                           style: kCardStyle1,
                         ),
-                        Text(
+                        const Text(
                           'Generate a key and provide that to deliverer',
                           style: kCardStyle2,
                         ),
+                        key!=null?
                         Text(
-                          key,
+                          key.toString(),
                           style: kCardStyle2,
-                        ),
+                        ):SizedBox(),
                       ],
                     ),
                   ),
