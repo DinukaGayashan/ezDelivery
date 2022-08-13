@@ -4,8 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
 
-class add_delivery extends StatelessWidget {
-  add_delivery({Key? key}) : super(key: key);
+class add_packages extends StatelessWidget {
+  add_packages({Key? key}) : super(key: key);
 
   final _functions=FirebaseFunctions.instance;
   final _firestore=FirebaseFirestore.instance;
@@ -31,7 +31,7 @@ class add_delivery extends StatelessWidget {
         elevation: 8.0,
         toolbarHeight: 80.0,
         title: const Text(
-          'Add Delivery',
+          'Add Package',
           style: kSubSubjectStyle,
         ),
       ),
@@ -172,7 +172,7 @@ class add_delivery extends StatelessWidget {
                       }
                     },
                     child: const Text(
-                      'Add Delivery',
+                      'Add Package',
                       style: kButtonTextStyle,
                     ),
                   ),

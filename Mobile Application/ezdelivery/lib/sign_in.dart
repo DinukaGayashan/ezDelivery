@@ -221,7 +221,7 @@ class _sign_inState extends State<sign_in> {
                             if(result.data.toString()=='customer'){
                               Navigator.pushReplacementNamed(context, '/customer_loading');
                             }else if(result.data.toString()=='distributor'){
-                              Navigator.pushReplacementNamed(context, '/deliverer_main_menu');
+                              Navigator.pushReplacementNamed(context, '/deliverer_loading');
                             }else{
                               Navigator.pushReplacementNamed(context, '/registration_form');
                             }

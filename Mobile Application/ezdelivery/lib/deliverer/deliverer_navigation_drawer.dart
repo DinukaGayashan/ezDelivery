@@ -1,7 +1,18 @@
+import 'package:ezdelivery/deliverer/packages_to_deliver.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
 
-class deliverer_navigation_drawer extends StatelessWidget{
+class deliverer_navigation_drawer extends StatefulWidget{
+  const deliverer_navigation_drawer(this.user,this.packages,{Key? key}) : super(key: key);
+  final User? user;
+  final List<dynamic> packages;
+
+  @override
+  State<deliverer_navigation_drawer> createState() => _deliverer_navigation_drawerState();
+}
+
+class _deliverer_navigation_drawerState extends State<deliverer_navigation_drawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -34,29 +45,34 @@ class deliverer_navigation_drawer extends StatelessWidget{
           ),
           ListTile(
             title: const Text(
-              "CUSTOMER TRACKING",
-              style: kDrawerTextStyle,
-            ),
-            onTap: (){
-              Navigator.pushNamed(context, '/delivery_tracking');
-            },
-          ),
-          ListTile(
-            title: const Text(
               "ADD DELIVERY",
               style: kDrawerTextStyle,
             ),
             onTap: (){
+              Navigator.pop(context);
               Navigator.pushNamed(context, '/add_delivery');
             },
           ),
           ListTile(
             title: const Text(
-              "SETTINGS",
+              "PACKAGES TO DELIVER",
               style: kDrawerTextStyle,
             ),
             onTap: (){
-              Navigator.pushNamed(context, '/settings');
+              Navigator.pop(context);
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return packages_to_deliver(widget.user,widget.packages,);
+              }));
+            },
+          ),
+          ListTile(
+            title: const Text(
+              "DELIVERED PACKAGES",
+              style: kDrawerTextStyle,
+            ),
+            onTap: (){
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/customer_tracking');
             },
           ),
           ListTile(
@@ -65,7 +81,7 @@ class deliverer_navigation_drawer extends StatelessWidget{
               style: kDrawerTextStyle,
             ),
             onTap: (){
-              Navigator.pushNamed(context, '/sign_in');
+              Navigator.pushReplacementNamed(context, '/sign_in');
             },
           ),
         ],
