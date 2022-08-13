@@ -1,4 +1,4 @@
-import 'package:ezdelivery/deliverer/delivered_packages.dart';
+import 'package:ezdelivery/deliverer/completed_delivery.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'deliverer/add_packages.dart';
@@ -36,12 +36,12 @@ class ezDelivery extends StatelessWidget {
       initialRoute: '/sign_in',
       routes: {
         '/sign_up': (context) => sign_up(),
-        '/sign_in': (context) => sign_in(),
-        '/registration_form': (context) => registration_form(),
-        '/customer_loading': (context) => customer_loading(),
-        '/schedule_time': (context) => schedule_time(),
-        '/share_account': (context) => share_account(),
-        '/deliverer_loading': (context) => deliverer_loading(),
+        '/sign_in': (context) => const sign_in(),
+        '/registration_form': (context) => const registration_form(),
+        '/customer_loading': (context) => const customer_loading(),
+        '/schedule_time': (context) => const schedule_time(),
+        '/share_account': (context) => const share_account(),
+        '/deliverer_loading': (context) => const deliverer_loading(),
         '/add_delivery': (context) => add_packages(),
         '/settings': (context) => settings(),
       },

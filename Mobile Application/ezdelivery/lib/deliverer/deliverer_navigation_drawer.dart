@@ -2,7 +2,7 @@ import 'package:ezdelivery/deliverer/packages_to_deliver.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
-import 'delivered_packages.dart';
+import 'completed_delivery.dart';
 
 class deliverer_navigation_drawer extends StatefulWidget{
   const deliverer_navigation_drawer(this.user,this.packages,{Key? key}) : super(key: key);
@@ -74,7 +74,7 @@ class _deliverer_navigation_drawerState extends State<deliverer_navigation_drawe
             onTap: (){
               Navigator.pop(context);
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return delivered_packages(widget.user,widget.packages,);
+                return completed_delivery(widget.user,widget.packages,);
               }));
             },
           ),

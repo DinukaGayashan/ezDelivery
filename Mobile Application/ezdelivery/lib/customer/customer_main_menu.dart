@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ezdelivery/deliverer/delivered_packages.dart';
 import 'delivery_tracking.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,6 @@ class _customer_main_menuState extends State<customer_main_menu> {
       outTime=userDoc['outTimes']['outTime'];
     }catch(e){}
 
-
     setState(() {
       key;
       outTime;
@@ -51,9 +51,13 @@ class _customer_main_menuState extends State<customer_main_menu> {
   }
 
   @override
-  Widget build(BuildContext context) {
-
+  void initState() {
     getData();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
 
     return Scaffold(
       backgroundColor: kAccentColor3,
@@ -83,21 +87,55 @@ class _customer_main_menuState extends State<customer_main_menu> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text(
-                          'Packages',
+                          'Delivery Tracking',
                           style: kCardStyle1,
                         ),
                         const Text(
-                          'Package delivery details',
+                          'Pending package delivery details',
                           style: kCardStyle2,
                         ),
                         Text(
-                          getPackagesWithAttribute(
+                            (getPackagesWithAttribute(
                                       attribute: 'status', state: 'in_transit')
-                                  .length
+                                  .length+getPackagesWithAttribute(
+                                attribute: 'status', state: 'delivering')
+                                .length)
                                   .toString() +
-                              ' In transit, ' +
+                              ' Pending',
+                          style: kCardStyle2,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return delivery_tracking(
+                      widget.user,
+                      widget.packages,
+                    );
+                  }));
+                },
+              ),
+              InkWell(
+                child: card(
+                  context,
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Delivered Packages',
+                          style: kCardStyle1,
+                        ),
+                        const Text(
+                          'Delivered package details',
+                          style: kCardStyle2,
+                        ),
+                        Text(
                               getPackagesWithAttribute(
-                                      attribute: 'status', state: 'completed')
+                                  attribute: 'status', state: 'delivered')
                                   .length
                                   .toString() +
                               ' Completed',
@@ -109,7 +147,7 @@ class _customer_main_menuState extends State<customer_main_menu> {
                 ),
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return delivery_tracking(
+                    return delivered_packages(
                       widget.user,
                       widget.packages,
                     );

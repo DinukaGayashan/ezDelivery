@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 
-class delivered_packages extends StatelessWidget {
-  delivered_packages(this.user, this.packages, {Key? key}) : super(key: key);
+class completed_delivery extends StatelessWidget {
+  completed_delivery(this.user, this.packages, {Key? key}) : super(key: key);
   final User? user;
   final List<dynamic> packages;
 
