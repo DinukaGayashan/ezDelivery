@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 
-class customer_tracking extends StatelessWidget {
-  customer_tracking({Key? key}) : super(key: key);
+class delivered_packages extends StatelessWidget {
+  delivered_packages({Key? key}) : super(key: key);
 
   final _auth=FirebaseAuth.instance;
   User? user;
@@ -26,7 +26,7 @@ class customer_tracking extends StatelessWidget {
         elevation: 8.0,
         toolbarHeight: 80.0,
         title: const Text(
-          'Customer Tracking',
+          'Delivered Packages',
           style: kSubSubjectStyle,
         ),
       ),
