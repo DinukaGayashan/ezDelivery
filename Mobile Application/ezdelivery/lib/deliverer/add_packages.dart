@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -158,17 +160,17 @@ class add_packages extends StatelessWidget {
                                     'status':'in_transit',
                                   }
                               );
-
                             }
-                            Navigator.pop(context);
+                            sleep(const Duration(seconds: 6));
+                            Navigator.pushNamedAndRemoveUntil(context, '/deliverer_loading', (route) => false);
                           }
                           else{
-                            print('no such user exist');
+                            snackBar(context, message: 'No such user exist.');
                           }
                         }
                       }
                       catch(e){
-                        print(e);
+                        snackBar(context, message: e.toString(),);
                       }
                     },
                     child: const Text(

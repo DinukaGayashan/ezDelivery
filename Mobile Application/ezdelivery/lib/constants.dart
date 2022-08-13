@@ -87,3 +87,18 @@ Widget card(BuildContext context, Widget content){
   );
 }
 
+ScaffoldFeatureController<SnackBar, SnackBarClosedReason> snackBar(
+    BuildContext context,
+    {required message}) {
+  return ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      behavior: SnackBarBehavior.floating,
+      content: Text(
+        message,
+        style: kCardStyle2,
+        textAlign: TextAlign.center,
+      ),
+      backgroundColor: kAccentColor2,
+    ),
+  );
+}

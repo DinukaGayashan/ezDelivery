@@ -2,6 +2,7 @@ import 'package:ezdelivery/deliverer/packages_to_deliver.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
+import 'delivered_packages.dart';
 
 class deliverer_navigation_drawer extends StatefulWidget{
   const deliverer_navigation_drawer(this.user,this.packages,{Key? key}) : super(key: key);
@@ -72,7 +73,9 @@ class _deliverer_navigation_drawerState extends State<deliverer_navigation_drawe
             ),
             onTap: (){
               Navigator.pop(context);
-              Navigator.pushNamed(context, '/customer_tracking');
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return delivered_packages(widget.user,widget.packages,);
+              }));
             },
           ),
           ListTile(

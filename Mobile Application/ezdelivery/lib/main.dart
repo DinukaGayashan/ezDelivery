@@ -1,4 +1,4 @@
-import 'package:ezdelivery/deliverer/customer_tracking.dart';
+import 'package:ezdelivery/deliverer/delivered_packages.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'deliverer/add_packages.dart';
@@ -44,7 +44,6 @@ class ezDelivery extends StatelessWidget {
         '/deliverer_loading': (context) => deliverer_loading(),
         '/add_delivery': (context) => add_packages(),
         '/settings': (context) => settings(),
-        '/customer_tracking': (context) => customer_tracking(),
       },
     );
   }

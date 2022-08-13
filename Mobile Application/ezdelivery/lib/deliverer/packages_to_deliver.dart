@@ -14,6 +14,8 @@ class packages_to_deliver extends StatefulWidget {
 }
 
 class _packages_to_deliverState extends State<packages_to_deliver> {
+  final _firestore=FirebaseFirestore.instance;
+
   List<dynamic> getPackagesWithAttribute(
       {required String attribute, required String state}) {
     List<dynamic> ps = [];
@@ -42,6 +44,48 @@ class _packages_to_deliverState extends State<packages_to_deliver> {
         child: ListView(
             children: [
               const SizedBox(height: 10,),
+              for (var p in getPackagesWithAttribute(
+                  attribute: 'status', state: 'delivering'))
+                InkWell(
+                  child: card(
+                    context,
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                p['trackingNumber'],
+                                style: kCardStyle1,
+                              ),
+                              Text(
+                                p['status'],
+                                style: kCardStyle2,
+                              ),
+                            ],
+                          ),
+                          Text(
+                            'Item: '+p['packageName'],
+                            style: kCardStyle2,
+                          ),
+                          Text(
+                            'Added time: ' + p['addedTime'].toDate().toString(),
+                            style: kCardStyle2,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  onTap: () async {
+                    final c=await _firestore.collection('customers').where('email',isEqualTo: p['customerEmail']).get();
+                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                      return delivery_item(p,c.docs.first);
+                    }));
+                  },
+                ),
               for (var p in getPackagesWithAttribute(
                   attribute: 'status', state: 'in_transit'))
                 InkWell(
@@ -77,9 +121,10 @@ class _packages_to_deliverState extends State<packages_to_deliver> {
                       ),
                     ),
                   ),
-                  onTap: () {
+                  onTap: () async {
+                    final c=await _firestore.collection('customers').where('email',isEqualTo: p['customerEmail']).get();
                     Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return delivery_item(p);
+                      return delivery_item(p,c.docs.first);
                     }));
                   },
                 ),
