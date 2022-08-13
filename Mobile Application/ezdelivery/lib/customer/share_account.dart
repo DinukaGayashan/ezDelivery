@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/services.dart';
-import '../constants.dart';
+import 'package:ezdelivery/constants.dart';
 
 class share_account extends StatefulWidget {
   const share_account({Key? key}) : super(key: key);
@@ -32,7 +32,7 @@ class _share_accountState extends State<share_account> {
       user=_auth.currentUser;
     }
     catch(e){
-      print(e);
+      snackBar(context, message: e.toString());
     }
 
     getData();
@@ -122,7 +122,7 @@ class _share_accountState extends State<share_account> {
                       keyController.text=result.data.toString();
                     }
                     catch(e){
-                      print(e);
+                      snackBar(context, message: e.toString());
                     }
                   },
                   child: const Text(

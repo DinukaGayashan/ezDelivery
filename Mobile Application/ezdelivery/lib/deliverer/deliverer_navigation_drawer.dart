@@ -1,8 +1,8 @@
 import 'package:ezdelivery/deliverer/packages_to_deliver.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../constants.dart';
-import 'completed_delivery.dart';
+import 'package:ezdelivery/constants.dart';
+import 'package:ezdelivery/deliverer/completed_delivery.dart';
 
 class deliverer_navigation_drawer extends StatefulWidget{
   const deliverer_navigation_drawer(this.user,this.packages,{Key? key}) : super(key: key);

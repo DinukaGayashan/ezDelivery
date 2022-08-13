@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ezdelivery/deliverer/delivered_packages.dart';
-import 'delivery_tracking.dart';
+import 'package:ezdelivery/customer/delivery_tracking.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../constants.dart';
-import 'customer_navigation_drawer.dart';
+import 'package:ezdelivery/constants.dart';
+import 'package:ezdelivery/customer/customer_navigation_drawer.dart';
 
 class customer_main_menu extends StatefulWidget {
   const customer_main_menu(this.user, this.packages, {Key? key})
@@ -37,12 +37,16 @@ class _customer_main_menuState extends State<customer_main_menu> {
     final userDoc=await _firestore.collection('customers').doc(widget.user?.uid).get();
     try{
       key=userDoc['key'];
-    }catch(e){}
+    }catch(e){
+      rethrow;
+    }
 
     try{
       outFrom=userDoc['outTimes']['outFrom'].toDate();
       outTime=userDoc['outTimes']['outTime'];
-    }catch(e){}
+    }catch(e){
+      rethrow;
+    }
 
     setState(() {
       key;
@@ -174,7 +178,7 @@ class _customer_main_menuState extends State<customer_main_menu> {
                         Text(
                           'Out from '+outFrom.toString()+' for '+outTime.toString()+' hours',
                           style: kCardStyle2,
-                        ):SizedBox(),
+                        ):const SizedBox(),
                       ],
                     ),
                   ),
@@ -203,7 +207,7 @@ class _customer_main_menuState extends State<customer_main_menu> {
                         Text(
                           key.toString(),
                           style: kCardStyle2,
-                        ):SizedBox(),
+                        ):const SizedBox(),
                       ],
                     ),
                   ),

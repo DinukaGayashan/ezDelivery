@@ -1,8 +1,8 @@
 import 'package:ezdelivery/deliverer/delivered_packages.dart';
 import 'package:flutter/material.dart';
-import '../constants.dart';
+import 'package:ezdelivery/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'delivery_tracking.dart';
+import 'package:ezdelivery/customer/delivery_tracking.dart';
 
 class customer_navigation_drawer extends StatefulWidget {
   const customer_navigation_drawer(this.user,this.packages,{Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class _customer_navigation_drawerState extends State<customer_navigation_drawer>
       user=_auth.currentUser;
     }
     catch(e){
-      print(e);
+      snackBar(context, message: e.toString());
     }
 
     return Drawer(

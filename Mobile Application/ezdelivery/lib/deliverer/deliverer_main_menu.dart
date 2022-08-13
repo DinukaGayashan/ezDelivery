@@ -1,9 +1,9 @@
 import 'package:ezdelivery/deliverer/packages_to_deliver.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../constants.dart';
-import 'completed_delivery.dart';
-import 'deliverer_navigation_drawer.dart';
+import 'package:ezdelivery/constants.dart';
+import 'package:ezdelivery/deliverer/completed_delivery.dart';
+import 'package:ezdelivery/deliverer/deliverer_navigation_drawer.dart';
 
 class deliverer_main_menu extends StatelessWidget {
   deliverer_main_menu(this.user, this.packages, {Key? key}) : super(key: key);

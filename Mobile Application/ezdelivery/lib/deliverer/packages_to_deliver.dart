@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ezdelivery/deliverer/delivery_item.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../constants.dart';
+import 'package:ezdelivery/constants.dart';
 
 class packages_to_deliver extends StatefulWidget {
   packages_to_deliver(this.user, this.packages, {Key? key}) : super(key: key);

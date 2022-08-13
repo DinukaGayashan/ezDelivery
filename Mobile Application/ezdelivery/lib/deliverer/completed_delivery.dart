@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../constants.dart';
+import 'package:ezdelivery/constants.dart';
 
 
 class completed_delivery extends StatelessWidget {

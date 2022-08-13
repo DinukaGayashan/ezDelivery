@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../constants.dart';
+import 'package:ezdelivery/constants.dart';
 
 class delivered_packages extends StatefulWidget {
   const delivered_packages(this.user,this.packages,{Key? key}) : super(key: key);

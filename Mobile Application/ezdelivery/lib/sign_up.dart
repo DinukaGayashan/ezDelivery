@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import 'package:ezdelivery/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class sign_up extends StatefulWidget {
@@ -129,7 +129,7 @@ class _sign_upState extends State<sign_up> {
                     minWidth: double.infinity,
                     onPressed: () async {
                       if(password1.length<6){
-                        print("Password must be at least 6 characters long");
+                        snackBar(context, message: "Password must be at least 6 characters long");
                       }
                       else if(password1==password2){
                         try{
@@ -139,11 +139,11 @@ class _sign_upState extends State<sign_up> {
                           }
                         }
                         catch(e){
-                          print(e);
+                          snackBar(context, message: e.toString());
                         }
                       }
                       else{
-                        print("Not similar passwords");
+                        snackBar(context, message: "Not similar passwords");
                       }
                     },
                     child: const Text(

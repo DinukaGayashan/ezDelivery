@@ -1,10 +1,9 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../constants.dart';
+import 'package:ezdelivery/constants.dart';
 
 class add_packages extends StatelessWidget {
   add_packages({Key? key}) : super(key: key);
@@ -23,7 +22,7 @@ class add_packages extends StatelessWidget {
       user=_auth.currentUser;
     }
     catch(e){
-      print(e);
+      snackBar(context, message: e.toString());
     }
 
     return Scaffold(

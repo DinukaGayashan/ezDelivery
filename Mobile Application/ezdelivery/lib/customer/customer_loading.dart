@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ezdelivery/constants.dart';
-import 'customer_main_menu.dart';
+import 'package:ezdelivery/customer/customer_main_menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -34,7 +34,7 @@ class _customer_loadingState extends State<customer_loading> {
       user=_auth.currentUser;
     }
     catch(e){
-      print(e.toString());
+      snackBar(context, message: e.toString());
     }
     getData();
 

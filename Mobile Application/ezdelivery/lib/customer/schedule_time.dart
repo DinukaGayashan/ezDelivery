@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../constants.dart';
+import 'package:ezdelivery/constants.dart';
 import 'package:duration_picker/duration_picker.dart';
 
 class schedule_time extends StatefulWidget {
@@ -50,7 +50,7 @@ class _schedule_timeState extends State<schedule_time> {
       user=_auth.currentUser;
     }
     catch(e){
-      print(e);
+      snackBar(context, message: e.toString());
     }
 
     return Scaffold(
@@ -119,7 +119,7 @@ class _schedule_timeState extends State<schedule_time> {
                       );
                     }
                     catch(e){
-                      print(e);
+                      snackBar(context, message: e.toString());
                     }
                   },
                   child: const Text(

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ezdelivery/constants.dart';
-import 'deliverer_main_menu.dart';
+import 'package:ezdelivery/deliverer/deliverer_main_menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -35,7 +35,7 @@ class _deliverer_loadingState extends State<deliverer_loading> {
       user=_auth.currentUser;
     }
     catch(e){
-      print(e.toString());
+      snackBar(context, message: e.toString());
     }
     getData();
 

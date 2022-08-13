@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../constants.dart';
-import 'delivery_package.dart';
+import 'package:ezdelivery/constants.dart';
+import 'package:ezdelivery/customer/delivery_package.dart';
 
 class delivery_tracking extends StatefulWidget {
   const delivery_tracking(this.user,this.packages,{Key? key}) : super(key: key);

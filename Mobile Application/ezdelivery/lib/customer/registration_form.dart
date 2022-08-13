@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import '../constants.dart';
+import 'package:ezdelivery/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -31,7 +31,7 @@ class _registration_formState extends State<registration_form> {
       final User? user=_auth.currentUser;
     }
     catch(e){
-      print(e);
+      snackBar(context, message: e.toString());
     }
   }
 
@@ -223,7 +223,7 @@ class _registration_formState extends State<registration_form> {
                       Navigator.pushReplacementNamed(context, '/customer_loading');
                     }
                     catch(e){
-                      print(e);
+                      snackBar(context, message: e.toString());
                     }
                   },
                   child: const Text(

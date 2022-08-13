@@ -1,20 +1,15 @@
-import 'package:ezdelivery/deliverer/completed_delivery.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'deliverer/add_packages.dart';
-import 'constants.dart';
-import 'customer/customer_loading.dart';
-import 'customer/customer_main_menu.dart';
-import 'deliverer/deliverer_loading.dart';
-import 'deliverer/deliverer_main_menu.dart';
-import 'deliverer/packages_to_deliver.dart';
-import 'sign_in.dart';
-import 'sign_up.dart';
-import 'customer/delivery_tracking.dart';
-import 'customer/schedule_time.dart';
-import 'customer/share_account.dart';
-import 'customer/settings.dart';
-import 'customer/registration_form.dart';
+import 'package:ezdelivery/deliverer/add_packages.dart';
+import 'package:ezdelivery/constants.dart';
+import 'package:ezdelivery/customer/customer_loading.dart';
+import 'package:ezdelivery/deliverer/deliverer_loading.dart';
+import 'package:ezdelivery/sign_in.dart';
+import 'package:ezdelivery/sign_up.dart';
+import 'package:ezdelivery/customer/schedule_time.dart';
+import 'package:ezdelivery/customer/share_account.dart';
+import 'package:ezdelivery/customer/settings.dart';
+import 'package:ezdelivery/customer/registration_form.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

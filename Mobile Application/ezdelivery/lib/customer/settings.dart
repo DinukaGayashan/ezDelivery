@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import '../constants.dart';
+import 'package:ezdelivery/constants.dart';
 
 class settings extends StatefulWidget {
   settings({Key? key}) : super(key: key);
@@ -41,7 +41,7 @@ class _settingsState extends State<settings> {
       user=_auth.currentUser;
     }
     catch(e){
-      print(e);
+      snackBar(context, message: e.toString());
     }
 
     getData();
@@ -128,7 +128,7 @@ class _settingsState extends State<settings> {
                               );
 
                             } catch (e) {
-
+                              snackBar(context, message: e.toString());
                             }
                             Navigator.of(context).pop();
                           },
@@ -206,7 +206,7 @@ class _settingsState extends State<settings> {
                               );
 
                             } catch (e) {
-
+                              snackBar(context, message: e.toString());
                             }
                             Navigator.of(context).pop();
                           },
@@ -284,7 +284,7 @@ class _settingsState extends State<settings> {
                               );
 
                             } catch (e) {
-
+                              snackBar(context, message: e.toString());
                             }
                             Navigator.of(context).pop();
                           },
@@ -407,7 +407,7 @@ class _settingsState extends State<settings> {
                               );
 
                             } catch (e) {
-
+                              snackBar(context, message: e.toString());
                             }
                             Navigator.of(context).pop();
                           },

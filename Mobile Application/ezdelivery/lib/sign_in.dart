@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import 'package:ezdelivery/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_functions/cloud_functions.dart';
@@ -37,7 +37,7 @@ class _sign_inState extends State<sign_in> {
       }
     }
     catch(e){
-      print(e);
+      snackBar(context, message: e.toString());
     }
   }
 
@@ -190,7 +190,7 @@ class _sign_inState extends State<sign_in> {
                             await _auth.sendPasswordResetEmail(email: email);
                           }
                           catch(e){
-                            print(e);
+                            snackBar(context, message: e.toString());
                           }
                         },
                         child: const Text('Forgot Password'),
@@ -226,12 +226,12 @@ class _sign_inState extends State<sign_in> {
                               Navigator.pushReplacementNamed(context, '/registration_form');
                             }
                           }catch(e){
-                            print(e);
+                            snackBar(context, message: e.toString());
                           }
                         }
                       }
                       catch(e){
-                        print(e);
+                        snackBar(context, message: e.toString());
                       }
                     },
                     child: const Text(
